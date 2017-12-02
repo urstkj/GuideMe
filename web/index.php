@@ -41,7 +41,11 @@ if ($link === false) {
           </div>
         </form>
         <div class="select-type">
-          <button type="button" class="select-btn btn btn-primary">Face Search</button>
+          <form id="guide-search" action="facesearch.php"  method="post" name="f"  enctype="multipart/form-data">
+            <button type="button" id="face-search" class="select-btn btn btn-primary">Face Search</button>
+            <input type="file" id="file-upload" name="file-upload" hidden/>
+            <input type="submit" id="submit-btn" hidden/>
+          </form>
         </div>
       </center>
     </div>
@@ -92,7 +96,7 @@ if ($link === false) {
         };
 
         </script>
-
+        <script src="upload.js"></script>
   </body>
 </html>
 

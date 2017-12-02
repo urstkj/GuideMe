@@ -1,5 +1,5 @@
 import requests
-
+import base64
 
 class PostPHP:
 
@@ -9,16 +9,23 @@ class PostPHP:
         self.exp = exp
         self.city = city
         self.languages = languages
-        self.filename = "face_" + str(id) + ".npy"
+        self.npy = "npy/face_" + str(id) + ".npy"
+        self.img = "png/face_" + str(id) + ".png"
+
+    def b64(self, filelocation):
+        with open(filelocation, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        return encoded_string
 
     def post(self):
-        url = "http://localhost/add_guide.php"
+        url = "http://35.154.83.186/guideme/add_guide.php"
         r = requests.post(url, data={'id': self.id,
                                      'name': self.name,
                                      'exp': self.exp,
                                      'city':self.city,
                                      'languages':self.languages,
-                                     'filename' : self.filename})
+                                     'npy' : self.b64(self.npy),
+                                     'png' : self.b64(self.img)})
         print (r.status_code)
         print (r.text)
 

@@ -1,14 +1,33 @@
 <?php
+
+include 'api.php';
+
+if($_FILES["file-upload"]["tmp_name"])
+{
+  if(!$_FILES["file-upload"]["error"])
+  {
+    move_uploaded_file($_FILES["file-upload"]["tmp_name"], "test/test.jpg");
+  }
+}
+
+$id =  python_api("test/test.jpg");
+
+
+//echo $id;
+
+//
+
 include 'db.php';
- ?><html>
+ 
+?>
+
+<html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="search-page-style.css" type="text/css">
     <link rel="stylesheet" href="lightbox.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
   </head>
 
   <body>
@@ -22,21 +41,19 @@ include 'db.php';
 
 <?php
 
-  $city = mysqli_real_escape_string($link, $_REQUEST['city']);
-
-  $sql = "SELECT id,name,experience,rating FROM guide WHERE city= '$city'";
+  $sql = "SELECT id,name,experience,rating,city FROM guide WHERE id= '$id'";
   $result = mysqli_query($link, $sql);
-
-  $count = 1;
 
   if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
         echo'
-        <div class="info-container">';
+        <div class="info-container" style="height: 300px">';
 
         $id = $row["id"];
 
+        $city = $row["city"];
+        
         $sql1 = "SELECT lang FROM lang WHERE guide_id= '$id'";
         $result1 = mysqli_query($link, $sql1);
 
@@ -65,7 +82,13 @@ include 'db.php';
         echo $row["experience"];
 
         echo' years</dd><hr>
-        <dt>Languages:</dt>
+        <dt>City: </dt>
+        <dd>';
+            
+        echo $city;
+        
+        echo '</dd>
+        <hr><dt>Languages:</dt>
         <dd>';
 
         $l = array();
@@ -88,8 +111,6 @@ include 'db.php';
 
         </div>
         </div>';
-
-        $count = $count+1;
     }
   }
 
@@ -105,5 +126,8 @@ include 'db.php';
   </html>';
 
   mysqli_close($link);
+
+?>
+
 
 ?>

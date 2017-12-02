@@ -10,11 +10,8 @@ import cv2
 
 def capture(frame, iid):
     print("Saving")
-    path = "C:\wamp64\www\guideme\images\guideimages\\"
-    #path = "D:\\"
-    full = path + 'face_' + str(iid) + '.png'
-    print(full)
-    cv2.imwrite(full, frame)
+    
+    cv2.imwrite("png/" + 'face_'+str(iid)+'.png', frame)
 
 def record(iid):
     cam = cv2.VideoCapture(0)
@@ -28,7 +25,7 @@ def record(iid):
         ret, frame = cam.read()
         
         
-        if ret:
+        if ret == True:
             #convert current frame to grayscale
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             
@@ -40,6 +37,9 @@ def record(iid):
                 fc = cv2.resize(face_component, (50, 50))
                 
                 if  ix%10==0 and len(data) <20:
+                    if len(data)==10:
+                        print_face = frame[y-80:y+h+30, x-30:x+w+30,:]
+                        capture(print_face, iid)
                     data.append(fc)
                     
                 #display rect around face
@@ -48,8 +48,8 @@ def record(iid):
             cv2.imshow('frame', frame)
             
             if cv2.waitKey(1)==27 or len(data)>=20:
-                ret, frame = cam.read()
-                capture(frame,iid)
+              #  ret, frame = cam.read()
+               # capture(frame)
                 break
         else:
             print('error')
@@ -61,4 +61,4 @@ def record(iid):
     
     data = np.asarray(data)
     print(data.shape)
-    np.save('face_'+str(iid), data)            
+    np.save("npy/" + 'face_' + str(iid), data)

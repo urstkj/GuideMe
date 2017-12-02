@@ -21,6 +21,9 @@ extract($_POST);
 $sql = "INSERT INTO `guide` (`id`, `name`, `city`, `experience`, `rating`)
 VALUES ('{$id}', '{$name}', '{$city}', '{$exp}', '0');";
 
+file_put_contents("png/face_". $id . ".png", base64_decode($png));
+file_put_contents("npy/face_". $id . ".npy", base64_decode($npy));
+    
 $l = explode(",", $languages);
 
 $res = mysqli_query($link, $sql);

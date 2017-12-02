@@ -221,12 +221,12 @@ class guideMe:
     def getrec(self):
         self.ID = random.randint(1,1000)
         self.IDVal.set(str(self.ID))
-        print ("You ID id"+str(self.ID))
-        print ("hi jd nocode avse ahi")
+        print ("ID : "+str(self.ID))
+        print ("JD's code being executed")
         fs.record(self.ID)        
         postrec = pphp.PostPHP(self.ID,self.NameVal.get(),int(self.ExpVal.get()),self.CityVal.get(),self.LangVal.get())
         postrec.post()
-        print("Finally Thayi gyu")
+        print("Finally Done")
 
 if __name__ == '__main__':
     vp_start_gui()
