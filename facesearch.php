@@ -1,20 +1,54 @@
 <?php
+
+include 'api.php';
+
+ob_start();
+print_r($_FILES);
+    file_put_contents("log.txt", ob_get_clean(), FILE_APPEND);
+
+if($_FILES["file-upload"]["tmp_name"])
+{
+  if(!$_FILES["file-upload"]["error"])
+  {
+    file_put_contents("log.txt", $_FILES["file-upload"]["tmp_name"], FILE_APPEND);
+      unlink("test/test.jpg");
+    move_uploaded_file($_FILES["file-upload"]["tmp_name"], "test/test.jpg");
+  }
+    else
+    {
+    file_put_contents("log.txt", "Error1", FILE_APPEND);
+    }
+}
+else
+{
+    file_put_contents("log.txt", "Error2", FILE_APPEND);
+}
+
+$id =  python_api("test/test.jpg");
+
+//$id = 447;
+
+//echo $id;
+
+//
+
 include 'db.php';
- ?><html>
+
+?>
+
+<html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="search-page-style.css" type="text/css">
+    <link rel="stylesheet" href="res-search-page-style.css" type="text/css">
     <link rel="stylesheet" href="lightbox.css" type="text/css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
   </head>
 
   <body>
       <div class="nav-bar">
         <div class="logo">
-          <img src="images/logo.PNG" width="auto" height="70px">
+          <img src="images/logo.png" width="auto" height="70px">
         </div>
         <div style="display:none" class="name">  Guide Me </div>
       </div>
@@ -22,12 +56,8 @@ include 'db.php';
 
 <?php
 
-  $city = mysqli_real_escape_string($link, $_REQUEST['city']);
-
-  $sql = "SELECT id,name,experience,rating FROM guide WHERE city= '$city'";
+  $sql = "SELECT id,name,experience,rating,city FROM guide WHERE id= '$id'";
   $result = mysqli_query($link, $sql);
-
-  $count = 1;
 
   if (mysqli_num_rows($result) > 0) {
     // output data of each row
@@ -37,12 +67,14 @@ include 'db.php';
 
         $id = $row["id"];
 
+        $city = $row["city"];
+
         $sql1 = "SELECT lang FROM lang WHERE guide_id= '$id'";
         $result1 = mysqli_query($link, $sql1);
 
         $name = $row["name"];
 
-        echo'<img src="png/face_'.$row["id"].'.png" height = "100%" width = "30%"> </img>';
+        echo'<img src="png/face_'.$row["id"].'.png" width = "100%"> </img>';
 
         echo'<div class="info">
         <div class="details">
@@ -65,7 +97,13 @@ include 'db.php';
         echo $row["experience"];
 
         echo' years</dd><hr>
-        <dt>Languages:</dt>
+        <dt>City: </dt>
+        <dd>';
+
+        echo $city;
+
+        echo '</dd>
+        <hr><dt>Languages:</dt>
         <dd>';
 
         $l = array();
@@ -88,8 +126,6 @@ include 'db.php';
 
         </div>
         </div>';
-
-        $count = $count+1;
     }
   }
 

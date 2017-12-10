@@ -9,7 +9,7 @@ body{
 
 .nav-bar{
   height: 70px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.4);
   margin: 0px;
 }
 .logo{
@@ -37,12 +37,12 @@ body{
 }
 
 .search-input{
-  width: 85%;
+ 
   height: 100%;
 }
 
 .search-btn-holder {
-  width: 15%;
+  
 }
 
 .search-btn{

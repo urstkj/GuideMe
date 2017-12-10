@@ -1,0 +1,80 @@
+  body{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+  }
+
+
+  .nav-bar{
+    height: 70px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+  .logo{
+    float: left;
+    margin: 0px;
+  }
+
+  .name{
+    padding-left: 80px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+  }
+
+  .search-results{
+    margin-top: ;
+  }
+
+  .info-container{
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  }
+
+  .disp-img{
+    display: block;
+    width: 100%;
+  }
+
+  .info{
+    background-color: white;
+  }
+
+  .details{
+    width:80%;
+    margin: auto;
+    padding: 10px;
+  }
+
+  .room-name{
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  dt{
+    float: left;
+    margin-right: 10px;
+  }
+
+  dl{
+    margin-bottom: 0px;
+  }
+
+  hr{
+    margin-top: 3px;
+    margin-bottom: 7px;
+    margin-right: 25px;
+  }
+
+  .details-list{
+
+  }
+
+  .contact-btn-holder{
+    height:10%;
+  }
+
+  .contact-btn{
+    width: 80%;
+    display:block;
+    margin: auto;
+  }

@@ -1,0 +1,88 @@
+Array
+(
+    [file-upload] => Array
+        (
+            [name] => new_face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\php2B12.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\php2B12.tmpArray
+(
+    [file-upload] => Array
+        (
+            [name] => new_face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\php1218.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\php1218.tmpArray
+(
+    [file-upload] => Array
+        (
+            [name] => new_face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\phpBBB7.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\phpBBB7.tmpArray
+(
+    [file-upload] => Array
+        (
+            [name] => new_face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\php5568.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\php5568.tmpArray
+(
+    [file-upload] => Array
+        (
+            [name] => new_face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\php45B4.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\php45B4.tmpArray
+(
+)
+Error2Array
+(
+    [file-upload] => Array
+        (
+            [name] => test.jpg
+            [type] => image/jpeg
+            [tmp_name] => C:\wamp64\tmp\phpBC14.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\phpBC14.tmpArray
+(
+    [file-upload] => Array
+        (
+            [name] => face_15.png
+            [type] => image/png
+            [tmp_name] => C:\wamp64\tmp\php21B5.tmp
+            [error] => 0
+            [size] => 96511
+        )
+
+)
+C:\wamp64\tmp\php21B5.tmp
